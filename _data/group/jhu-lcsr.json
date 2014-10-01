@@ -1,0 +1,30 @@
+{ 
+  "maintained": [
+    { 
+      "server": "github",
+      "ns": "jhu-lcsr",
+      "name": "barrett_model"
+    },
+    {
+      "server": "github",
+      "ns": "jbohren",
+      "name": "conman"
+    },
+    { 
+      "server": "github",
+      "ns": "jhu-lcsr",
+      "name": "orocos_barrett"
+    }
+  ],
+  "abandoned": [
+    { "server": "github",
+      "ns": "jhu-lcsr",
+      "name": "rosbuild_xenomai"}
+  ],
+  "forked": 
+  [
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "aruco_ros"}
+  ]
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!--<div id="groups"/>-->
+        <ul>
+          {% for group in site.data.groups %}
+          {% assign gid = group[0] %}
+          {% assign dat = group[1] %}
+          <li id="{{ gid }}"><a href="/groups/{{gid}}.html">{{ dat.institution }}, {{dat.name}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    {% include footer.html %}
+<script>
+/**$(document).ready(function() {
+                  $.getJSON( "/groups/groups.json", function( data ) {
+                             //alert( "Load was performed." );
+                             var items = [];
+                             $.each( data.groups, function( index, g ) {
+                                     items.push( "<li id='" + g.id + "'>" + g.institution + "</li>" );
+                                     });
+
+                             $( "<ul/>", {
+                                "class": "my-new-list",
+                                html: items.join( "" )
+                                }).appendTo( "#groups" );
+                             });
+                  });**/
+</script>
+
+  </body>
+
+</html>

@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+<script>
+
+function getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])]
+            = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+
+var $_GET = getQueryParams(document.location.search);
+
+
+var code = $_GET['code'];//window.location.href.match(/\?code=(.*)/)[1];
+console.log('code: '+code);
+var state_resp = $_GET['state'];
+console.log('state_resp: '+state_resp);
+
+if(state_resp == $.cookie('gh_state')) {
+  $.getJSON('{{site.github_gatekeeper_uri}}'+code, function(data) {
+   console.log('token: '+data.token);
+   $.cookie('gh_token', data.token);
+  });
+} else {
+  console.log('Bad gh state!');
+}
+
+</script>
+
+</div>

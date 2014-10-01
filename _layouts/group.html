@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        <h2>{{site.data.groups[page.group_id].institution}}</h2>
+        <h1>{{site.data.groups[page.group_id].name}}</h1>
+
+        <h3>Officers:</h3>
+        <ul>
+          <li>President: <a class="gh_user" gh_uid="{{site.data.groups[page.group_id].president}}"></a></li>
+          <li>Treasurer: <a class="gh_user" gh_uid="{{site.data.groups[page.group_id].treasurer}}"></a></li>
+          <li>Triager: <a class="gh_user" gh_uid="{{site.data.groups[page.group_id].triager}}"></a></li>
+          <li>Maintainer: <a class="gh_user" gh_uid="{{site.data.groups[page.group_id].maintainer}}"></a></li>
+        </ul>
+        <h3>Maintained:</h3>
+        <ul>
+          {% for proj in site.data.group[page.group_id].maintained %}
+          <li class="proj" id="{{proj.ns}}/{{proj.name}}" ns="{{proj.ns}}" name="{{proj.name}}">
+          <a href="http://github.com/{{proj.ns}}/{{proj.name}}">{{ proj.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <h3>Forked:</h3>
+        <ul>
+          {% for proj in site.data.group[page.group_id].forked %}
+          <li class="proj" id="{{proj.ns}}/{{proj.name}}" ns="{{proj.ns}}" name="{{proj.name}}">
+          <a href="http://github.com/{{proj.ns}}/{{proj.name}}">{{ proj.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <h3>Abandoned:</h3>
+        <ul>
+          {% for proj in site.data.group[page.group_id].abandoned %}
+          <li class="proj" id="{{proj.ns}}/{{proj.name}}" ns="{{proj.ns}}" name="{{proj.name}}">
+          <a href="http://github.com/{{proj.ns}}/{{proj.name}}">{{ proj.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+<script>
+$(document).ready(function() {
+                  //var github = new Github();
+                  $(".gh_user").each(
+                      function() {
+                        var ns = $(this).attr("gh_uid");
+                        var user_tag = $(this);
+
+                        var gh_user = new Gh3.User(ns); // You need a user first
+                        gh_user.fetch(function(err, res) {
+                          if(err) { throw "outch ..." }
+                          console.log(res);
+                          //tag = $("[gh_uid='"+ns+"']");
+                          user_tag.append(res.name);
+                          user_tag.attr('href','http://github.com/'+res.login);
+                        });
+                    });
+
+                  $(".proj").each(
+                      function() {
+                        var ns = $(this).attr("ns");
+                        var name = $(this).attr("name"); 
+
+                        /**
+                        var repo = github.getRepo( ns, name);
+                        var pulls = repo.listPulls(
+                            function(_, pulls) {
+                              alert(pulls.length)
+                            });
+                        **/
+
+                        var gh_user = new Gh3.User(ns); // You need a user first
+                        var gh_repo = new Gh3.Repository(name, gh_user);
+
+                        gh_repo.fetch(
+                            function (err, res) {
+                              if(err) { throw "outch ..." }
+                              //console.log(res);
+                            });
+
+                        gh_repo.fetchIssues(
+                            function (err, res) {
+                              if(err) { throw "outch ..." }
+                              console.log("------");
+                              //console.log(res);
+                              console.log(res.name);
+                              console.log(res.user.login);
+                              //console.log(res.full_name);
+                              //console.log(JSON.stringify(res));
+                              if('issues' in res) {
+                                var n_issues = res.issues.length;
+                                console.log('issues: '+n_issues);
+                                var issue_str = "issues";
+                                if(n_issues == 1) {
+                                  issue_str = "issue";
+                                }
+
+                                var selector = "#"+res.user.login+"\\/"+res.name;
+                                console.log('selector: '+selector);
+                                $(selector).append(" ( "+n_issues+" "+issue_str+" ) ");
+                              }
+                            });
+                        /**
+                        $( "<p>", {
+                           "class": "my-new-list",
+                           html: issues.length
+                           }).appendTo( "#"+ns+"/"+name );
+                        **/
+
+                        });
+                  })
+
+                  /**
+                  $(".pkg").getJSON( "/groups/groups.json", function( data ) {
+                             //alert( "Load was performed." );
+                             var items = [];
+                             $.each( data.groups, function( index, g ) {
+                                     items.push( "<li id='" + g.id + "'>" + g.institution + "</li>" );
+                                     });
+
+                             $( "<ul/>", {
+                                "class": "my-new-list",
+                                html: items.join( "" )
+                                }).appendTo( "#groups" );
+                             });
+                  });**/
+</script>
+
+    {% include footer.html %}
+  </body>
+
+</html>
