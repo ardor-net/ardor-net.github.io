@@ -26,5 +26,11 @@
     { "server": "github",
       "ns": "jhu-lcsr-forks",
       "name": "aruco_ros"}
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "openn_launch"}
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "rgbd_launch"}
   ]
 }
