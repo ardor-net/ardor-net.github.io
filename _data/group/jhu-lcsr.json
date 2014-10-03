@@ -34,6 +34,9 @@
       "name": "rgbd_launch"},
     { "server": "github",
       "ns": "jhu-lcsr-forks",
-      "name": "barrett"}
+      "name": "barrett"},
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "common_msgs"}
   ]
 }
