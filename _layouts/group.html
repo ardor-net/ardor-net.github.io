@@ -123,8 +123,9 @@ $(document).ready(function() {
                                     //console.log(res)
                                     for(var p in res.pulls) {
                                       var pull = res.pulls[p];
-                                      if(typeof pull.head.repo === "undefined") {
+                                      if(typeof(pull.head.repo) === "undefined") {
                                         console.log("uknown head repo for PR");
+                                        console.log(pull);
                                         continue;
                                       }
                                       var pull_name = pull.head.repo.name;
