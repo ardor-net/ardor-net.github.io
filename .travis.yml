@@ -1,5 +1,5 @@
 language: ruby
-cache: bundle
+cache: bundler
 rvm:
   - 1.9.3
 install:
