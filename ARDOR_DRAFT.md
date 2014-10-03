@@ -27,14 +27,16 @@ This network is composed of ARDOR Groups at independent research labs and academ
 
 ## ARDOR Group Anatomy
 
-An ARDOR group is composed of at least one student researcher at an academic institution. They are officially recognized through open request system.
+An ARDOR group is composed of at least one student researcher at an academic institution. They are officially recognized once they are listed on the main ARDOR site.
 
-ARDOR groups must have students who satisfy following roles (the assignment of roles is the responsibility of the individual groups):
+ARDOR groups must have students who satisfy following officer roles (the assignment of roles is the responsibility of the individual groups):
 
 * President
 * Treasurer
 * Triage Coordinator
 * Maintenance Coordinator
+
+Additionally, there can be many other "participating members" of a group outside of the officer roles. However, only the officers need to be listed and kept up to date.
 
 ### President
 
@@ -48,11 +50,9 @@ It is possible that individuals and/or corporate entities may want to sponsor on
 
 ### Triage Coordinator
 
-The Triage Coordinator is responsible for responding to any tickets or issues reported on actively maintained software.
+The Triage Coordinator is responsible for responding to any tickets or issues reported on actively maintained software. These responses must happen in a timely manner, and a ticket should not go untriaged for more than a week, or else it will affect the ARDOR group's reputation.
 
-These responses must happen in a timely manner, and a ticket should not go untriaged for more than a week, or else it will affect the ARDOR group's reputation.
-
-Responses do not necessarily need to sufficiently answer the question, or fix the bug, but they should appropriately label the bug with standard ARDOR issue labels and make a best effort to either find someone to solve the issue or explicitly close it.
+Responses do not necessarily need to sufficiently answer the question, or fix the bug, but they should appropriately label the bug with standard ARDOR issue labels and make a best effort to either find someone to solve the issue or explicitly close it. 
 
 The triage coordinator has one of the most important roles in an ARDOR group, since it involves communicating with potential collaborators.
 
