@@ -46,6 +46,9 @@
       "name": "camera1394"},
     { "server": "github",
       "ns": "jhu-lcsr-forks",
-      "name": "camera1394stereo"}
+      "name": "camera1394stereo"},
+    { "server": "github",
+      "ns": "jbohren-forks",
+      "name": "camera_pose"}
   ]
 }
