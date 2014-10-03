@@ -46,7 +46,16 @@
       </div>
     </div>
 <script>
+
+// Gray things out while they load
+$(document).bind("ajaxSend", function(evt, req, settings){
+  //console.log(req);
+}).bind("ajaxComplete", function(){
+  $(".page-content").fadeTo("slow",1.0);
+});
+
 $(document).ready(function() {
+                  $(".page-content").fadeTo(0.0,0.2);
                   //var github = new Github();
                   $(".gh_user").each(
                       function() {
@@ -56,7 +65,7 @@ $(document).ready(function() {
                         var gh_user = new Gh3.User(ns); // You need a user first
                         gh_user.fetch(function(err, res) {
                           if(err) { throw "outch ..." }
-                          console.log(res);
+                          //console.log(res);
                           //tag = $("[gh_uid='"+ns+"']");
                           user_tag.append(res.name);
                           user_tag.attr('href','http://github.com/'+res.login);
@@ -82,29 +91,73 @@ $(document).ready(function() {
                         gh_repo.fetch(
                             function (err, res) {
                               if(err) { throw "outch ..." }
-                              //console.log(res);
+                              console.log("------");
+                              console.log(res);
+                              if(res.fork) {
+                                console.log("it's a fork...");
+                                console.log(res.parent.full_name);
+                                // look for open PRs against the parent
+                                console.log(res.parent.owner.login)
+                                var parent_user = new Gh3.User(res.parent.owner.login); // You need a user first
+                                var parent_repo = new Gh3.Repository(res.parent.name, parent_user);
+                                if(0) {
+                                  parent_repo.fetchIssues(
+                                    function (err, res) {
+                                      if(err) { throw "outch ..." }
+                                      var n_issues = res.issues.length;
+                                      console.log(res.name+' n_issues: '+n_issues);
+                                      console.log(res);
+                                      for(var i in res.issues) {
+                                        var issue = res.issues[i];
+                                        if ("pull_request" in issue) {
+                                          console.log('pr: ');
+                                          console.log(issue);
+                                        }
+                                      }
+                                    });
+                                }
+                                // get pull requests
+                                parent_repo.fetchPulls(
+                                  function (err, res) {
+                                    if(err) { throw "outch ..." }
+                                    //console.log(res)
+                                    for(var p in res.pulls) {
+                                      var pull = res.pulls[p];
+                                      var pull_name = pull.head.repo.name;
+                                      var pull_owner = pull.head.repo.owner.login;
+                                      if(pull_owner == ns && pull_name == name) {
+                                        console.log('found pr from ardor repo: '+pull_owner+'/'+pull_name);
+                                        console.log(pull)
+                                        var selector = "#"+pull_owner+"\\/"+pull_name;
+                                        console.log('selector: '+selector);
+                                        $(selector).append(" ( pending pull request: <a href=\""+pull.html_url+"\">"+parent_repo.name+"#"+pull.number+"</a> ) ");
+                                      }
+                                    }
+                                  });
+                              }
                             });
 
                         gh_repo.fetchIssues(
                             function (err, res) {
                               if(err) { throw "outch ..." }
-                              console.log("------");
                               //console.log(res);
-                              console.log(res.name);
-                              console.log(res.user.login);
+                              //console.log(res.name);
+                              //console.log(res.user.login);
                               //console.log(res.full_name);
                               //console.log(JSON.stringify(res));
                               if('issues' in res) {
                                 var n_issues = res.issues.length;
-                                console.log('issues: '+n_issues);
+                                //console.log('issues: '+n_issues);
                                 var issue_str = "issues";
                                 if(n_issues == 1) {
                                   issue_str = "issue";
                                 }
 
                                 var selector = "#"+res.user.login+"\\/"+res.name;
-                                console.log('selector: '+selector);
-                                $(selector).append(" ( "+n_issues+" "+issue_str+" ) ");
+                                //console.log('selector: '+selector);
+                                if( n_issues > 0 ) {
+                                  $(selector).append(" ( "+n_issues+" "+issue_str+" ) ");
+                                }
                               }
                             });
                         /**

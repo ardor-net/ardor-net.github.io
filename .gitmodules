@@ -1,6 +1,6 @@
 [submodule "js/gh3"]
 	path = js/gh3
-	url = https://www.github.com/k33g/gh3.git
+	url = https://www.github.com/jbohren-forks/gh3.git
 [submodule "js/underscore"]
 	path = js/underscore
 	url = https://www.github.com/jashkenas/underscore.git
