@@ -37,6 +37,10 @@
       "name": "barrett"},
     { "server": "github",
       "ns": "jhu-lcsr-forks",
-      "name": "common_msgs"}
+      "name": "common_msgs"},
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "ros_control"}
+
   ]
 }
