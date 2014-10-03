@@ -10,10 +10,6 @@ Open source robotics software has classically suffered from a lack of appropriat
 
 The Academic Researchers Developing Open Robotics(ARDOR) Network and its constituent ARDOR Groups aim to resurrect this network of student developers and provide a framework for collaborating on open robotics systems.
 
-## Contents
-
-[[TOC]]
-
 ## The ARDOR Network
 
 The Academic Researchers Developing Open Robotics (ARDOR) network creates a framework for sustainable open source robotics development through handfuls of proactive students at numerous academic institutions.
@@ -70,6 +66,8 @@ This includes not only asking users at the ARDOR group's home institution, but a
 
 Members of the ARDOR network are encouraged to reach out to others in the community, and help get open-source contributions reviewed and merged.
 
+***TBD***
+
 ## Benefits to The Academic Robotics Community
 
 While research code is generally very platform and application-specific, there are thousands of low- and mid-level frameworks which are used across many robotics applications. Currently, if a student finds a bug in one of these frameworks, it is sometimes reported to the maintainer of the given package. If the maintainer does not respond, it is often the case that the student will at least try to patch a local version of the package. These fixes end up going unnoticed without a system which can make these modifications more visible. 
@@ -78,15 +76,17 @@ Students involved in an ARDOR group at a given institution will also benefit fro
 
 The ARDOR Network is structured so that it can improve the open robotics community as a whole, but it also has direct benefits to students who participate. The connections that students make will help them both collaborate on research projects and develop their identity in the community. It will also create a pool of students who can help each-other out with various robotics infrastructure and implementation issues.
 
-## ARDOR Network Management
+## ARDOR Network Infrastructure
 
-Besides the main index and mailing list, the ARDOR Network is a completely federated network. The main index website will be hosted on GitHub, and will manage modifications both to the website and to the lists of active packages via GitHub Pull Requests.
+Besides the main site and mailing list, the ARDOR Network is a completely federated network. The main index website are hosted on GitHub, and will manage modifications both to the website and to the lists of active packages via GitHub Pull Requests.
 
-The current main index can be found at: [http://ardor-net.github.io/](http://ardor-net.github.io/)
+* The main site can be found at: [http://ardor-net.github.io/](http://ardor-net.github.io/)
+* The mailing list can be found at: [https://groups.google.com/forum/#!forum/ardor-net](https://groups.google.com/forum/#!forum/ardor-net)
+* All other ARDOR resources can be found here on github: [https://github.com/ardor-net](https://github.com/ardor-net)
 
-The mailing list can be found at: [https://groups.google.com/forum/#!forum/ardor-net](https://groups.google.com/forum/#!forum/ardor-net)
+## Creating an ARDOR Group
 
-All other ARDOR resources can be found here on github: [https://github.com/ardor-net](https://github.com/ardor-net)
+***TBD***
 
 ## FAQ
 
