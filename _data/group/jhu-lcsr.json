@@ -40,7 +40,12 @@
       "name": "common_msgs"},
     { "server": "github",
       "ns": "jhu-lcsr-forks",
-      "name": "ros_control"}
-
+      "name": "ros_control"},
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "camera1394"},
+    { "server": "github",
+      "ns": "jhu-lcsr-forks",
+      "name": "camera1394stereo"}
   ]
 }
